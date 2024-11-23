@@ -52,7 +52,7 @@ These users need thoughtful, nuanced analysis that goes beyond simple "good/bad"
 
 - Reddit API: Fetching subreddit content
 - Perspective API: Content analysis
--Custom REST APIs: Backend services
+- Custom REST APIs: Backend services
 
 ### Sitemap
 
@@ -62,16 +62,16 @@ These users need thoughtful, nuanced analysis that goes beyond simple "good/bad"
 2. Subreddit Analysis Page
    - Subreddit input
    - Results dashboard
+   - Button for Score submission form
+   - Feedback submission
 3. Text Analysis Page
    - Single text analysis input
    - Batch analysis option input
    - Results visualization
-4. Score Suggestion Page (must be a component within one of the other pages, not its own page, tbd)
-   - Score submission form
-   - Feedback submission
+
 ### Mockups
 
-TBD
+![MockUp Image](/src/assets/Images/mockup.png?raw=true "Mock Up Image")
 
 ### Data
 

@@ -1,0 +1,147 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.header {
+    display: none;
+
+    @include desktop {
+        display: flex;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 70px;
+        justify-content: flex-end;
+        align-items: center;
+        flex-shrink: 0;
+        background-color: $white;
+        padding-right: 20px;
+
+    }
+
+
+    &__search {
+        @include desktop {
+            width: 388px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    &__search-container {
+        @include desktop {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+    }
+
+    &__search-icon {
+        @include desktop {
+            position: relative;
+            left: 2.75rem;
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+    }
+
+    &__search-bar {
+        @include desktop {
+            @include body-medium-desktop;
+            width: 300px;
+            height: 38px;
+            padding: 0.75rem 0.75rem 0.75rem 2.25rem;
+            border: 0.6px solid $grey;
+            border-radius: 19px;
+            background-color: $cloud;
+            outline: none;
+        }
+
+    }
+
+
+    &__icons {
+        @include desktop {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding-left: 20px;
+        }
+    }
+
+    &__icon {
+        @include desktop {
+            position: relative;
+            top: 4px;
+        }
+
+        img {
+            @include desktop {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    &__language {
+        @include desktop {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+
+            img {
+                width: 33px;
+                height: 20px;
+            }
+
+            span {
+                font-size: 14px;
+                color: $black;
+            }
+        }
+
+    }
+
+    &__dropdown-icon {
+        @include desktop {
+            @include body-medium-desktop;
+            color: $black;
+        }
+
+
+        img {
+            @include desktop {
+                display: flex;
+            }
+
+        }
+    }
+
+    &__profile {
+        @include desktop {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+    }
+
+    &__profile-avatar {
+        @include desktop {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+        }
+
+    }
+
+    &__profile-details {
+        @include desktop {
+            display: flex;
+            flex-direction: column;
+            @include body-medium-desktop;
+        }
+    }
+}

@@ -1,0 +1,128 @@
+@use '../../styles/partials/variables' as *;
+
+@mixin tablet {
+    @media (min-width: 768px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1280px) {
+        @content;
+    }
+}
+
+@mixin font-face($weight) {
+    font-family: $font-primary;
+    font-weight: $weight;
+}
+
+@mixin h1-desktop {
+    @include font-face($bold-weight);
+    font-size: 37px;
+    line-height: 48px;
+    color: $white;
+}
+
+@mixin h1-mobile {
+    @include font-face($semi-bold-weight);
+    font-size: 28px;
+    line-height: 36px;
+}
+
+@mixin h2-desktop {
+    @include font-face($semi-bold-weight);
+    font-size: 30px;
+    line-height: 58px;
+}
+
+@mixin h2-mobile {
+    @include font-face($semi-bold-weight);
+    font-size: 20px;
+    line-height: 28px;
+}
+
+@mixin h3-labels-links-button-desktop {
+    @include font-face($semi-bold-weight);
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@mixin h3-labels-links-button-mobile {
+    @include font-face($semi-bold-weight);
+    font-size: 13px;
+    line-height: 20px;
+}
+
+@mixin table-header-desktop {
+    @include font-face($semi-bold-weight);
+    font-size: 12px;
+    line-height: 18px;
+}
+
+@mixin table-header-mobile {
+    @include font-face($semi-bold-weight);
+    font-size: 11px;
+    line-height: 16px;
+}
+
+@mixin body-large-desktop {
+    @include font-face($regular-weight);
+    font-size: 16px;
+    line-height: 28px;
+}
+
+@mixin body-large-mobile {
+    @include font-face($regular-weight);
+    font-size: 15px;
+    line-height: 26px;
+}
+
+@mixin body-medium-desktop {
+    @include font-face($regular-weight);
+    font-size: 14px;
+    line-height: 22px;
+}
+
+@mixin body-medium-mobile {
+    @include font-face($regular-weight);
+    font-size: 13px;
+    line-height: 20px;
+}
+
+@mixin body-small-desktop {
+    @include font-face($regular-weight);
+    font-size: 12px;
+    line-height: 18px;
+}
+
+@mixin body-small-mobile {
+    @include font-face($regular-weight);
+    font-size: 11px;
+    line-height: 16px;
+}
+
+@mixin button-primary {
+    @include font-face($regular-weight);
+    background-color: $light-orange;
+    height: 2.25rem;
+    padding: 0 1rem;
+    border-radius: 5px;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $light-orange;
+    @include h3-labels-links-button-mobile;
+
+    &:hover {
+        background-color: $white;
+        border-color: #FFA000;
+        cursor: pointer;
+        color: $reddit-orange;
+    }
+
+    @include tablet {
+        height: 2.375rem;
+    }
+}
