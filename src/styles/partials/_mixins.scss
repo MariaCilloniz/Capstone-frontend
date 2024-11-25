@@ -68,7 +68,7 @@
 
 @mixin body-large-desktop {
     @include font-face($regular-weight);
-    font-size: 16px;
+    font-size: 15px;
     line-height: 28px;
 }
 
@@ -114,6 +114,32 @@
     align-items: center;
     border: 1px solid $light-orange;
     @include h3-labels-links-button-mobile;
+
+    &:hover {
+        background-color: $white;
+        border-color: #FFA000;
+        cursor: pointer;
+        color: $reddit-orange;
+    }
+
+    @include tablet {
+        height: 2.375rem;
+    }
+}
+
+@mixin button-secondary {
+    @include font-face($regular-weight);
+    background-color: $reddit-orange;
+    height: 3.25rem;
+    padding: 0 1rem;
+    border-radius: 5px;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $light-orange;
+    @include h3-labels-links-button-desktop;
+    font-size: 18px;
 
     &:hover {
         background-color: $white;

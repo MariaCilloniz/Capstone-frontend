@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { analyzeText } from '../../api/TextAnalyzerApi';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import './TextAnalyzer.scss'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -12,7 +13,7 @@ const TextAnalyzer = () => {
 
     const handleAnalyze = async () => {
         try {
-            setError(null); 
+            setError(null);
 
             const response = await analyzeText(text);
 
@@ -36,7 +37,7 @@ const TextAnalyzer = () => {
                 ],
                 datasets: [
                     {
-                        label: 'Text Analysis Scores',
+                        label: 'Categories',
                         data: [
                             toxicity,
                             severe_toxicity,
@@ -77,7 +78,7 @@ const TextAnalyzer = () => {
             },
             title: {
                 display: true,
-                text: 'Text Analysis Scores (0 to 1)',
+                text: 'Text Analysis Scores',
             },
         },
         scales: {
@@ -85,8 +86,8 @@ const TextAnalyzer = () => {
                 min: 0,
                 max: 1,
                 ticks: {
-                    stepSize: 0.1, 
-                    callback: (value) => value.toFixed(1), 
+                    stepSize: 0.1,
+                    callback: (value) => value.toFixed(1),
                 },
                 title: {
                     display: true,
@@ -98,15 +99,16 @@ const TextAnalyzer = () => {
 
 
     return (
-        <div>
+        <div className="text-analyzer">
             <textarea
+                className="text-analyzer__textarea"
                 value={text}
                 onChange={(e) => setText(e.target.value)}
                 placeholder="Enter text to analyze"
             />
-            <button onClick={handleAnalyze}>Analyze</button>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            {chartData && <Bar data={chartData} />}
+            <button className="text-analyzer__button" onClick={handleAnalyze}>Analyze</button>
+            {error && <p className="text-analyzer__error">{error}</p>}
+            {chartData && <Bar data={chartData} options={options} />}
         </div>
     );
 };
