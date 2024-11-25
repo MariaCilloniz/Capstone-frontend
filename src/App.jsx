@@ -5,6 +5,7 @@ import Header from './components/Header/Header';
 import Sidebar from './components/SideBar/Sidebar';
 import HomePage from './pages/HomePage/HomePage';
 import PostsPage from './pages/PostsPage/PostsPage';
+import SubRedditPage from './pages/SubredditPage/SubRedditPage';
 
 function App() {
   return (
@@ -13,7 +14,8 @@ function App() {
     <Sidebar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/api/analyze" element={<PostsPage />} />
+        <Route path="/posts" element={<PostsPage />} />
+        <Route path="/subreddit" element={<SubRedditPage />} />
       </Routes>
     </BrowserRouter>
   )

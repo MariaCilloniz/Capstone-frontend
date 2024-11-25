@@ -62,7 +62,7 @@ function Sidebar() {
                 </div>
 
                 <NavLink
-                    to="/api/analyze"
+                    to="/posts"
                     className={({ isActive }) =>
                         `sidebar__menu-item ${isActive ? 'sidebar__menu-item--active' : ''}`
                     }
