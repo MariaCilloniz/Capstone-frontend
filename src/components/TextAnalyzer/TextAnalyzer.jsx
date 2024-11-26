@@ -7,15 +7,17 @@ import './TextAnalyzer.scss'
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const TextAnalyzer = () => {
-    const [text, setText] = useState('');
+    const [inputValue, setInputValue] = useState('');
     const [chartData, setChartData] = useState(null);
     const [error, setError] = useState(null);
 
-    const handleAnalyze = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
         try {
             setError(null);
 
-            const response = await analyzeText(text);
+            const response = await analyzeText(inputValue);
 
             const {
                 toxicity,
@@ -100,13 +102,17 @@ const TextAnalyzer = () => {
 
     return (
         <div className="text-analyzer">
-            <textarea
-                className="text-analyzer__textarea"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                placeholder="Enter text to analyze"
-            />
-            <button className="text-analyzer__button" onClick={handleAnalyze}>Analyze</button>
+            <form className="text-analyzer__form" onSubmit={handleSubmit}>
+                <textarea
+                    className="text-analyzer__textarea"
+                    name="text-input"         
+                    id="text-analysis-input"  
+                    value={inputValue}
+                    onChange={(e) => setInputValue(e.target.value)}
+                    placeholder="Enter text to analyze"
+                />
+                <button type="submit" className="text-analyzer__button">Analyze</button>
+            </form>
             {error && <p className="text-analyzer__error">{error}</p>}
             {chartData && <Bar data={chartData} options={options} />}
         </div>

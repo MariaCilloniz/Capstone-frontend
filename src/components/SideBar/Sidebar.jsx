@@ -54,12 +54,18 @@ function Sidebar() {
 
             <div className="sidebar__services">
                 <div className="sidebar__services-title">SERVICES</div>
-                <div className="sidebar__menu-item">
+
+                <NavLink
+                    to="/subreddit"
+                    className={({ isActive }) =>
+                        `sidebar__menu-item ${isActive ? 'sidebar__menu-item--active' : ''}`
+                    }
+                >
                     <div className="sidebar__menu-icon">
                         <img src={SubredditIcon} alt="Subreddit Analyzer Icon" />
                     </div>
                     <span>Subreddit Analyzer</span>
-                </div>
+                </NavLink>
 
                 <NavLink
                     to="/posts"

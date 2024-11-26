@@ -1,24 +1,54 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './SubredditAnalyzer.scss'
 import { getSubredditAnalysis } from '../../api/SubredditAnalyzerApi'
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-function SubredditAnalyzer() {
-    const [subreddit, setSubreddit] = useState('');
+function SubredditAnalyzer(props) {
+    const navigate = useNavigate();
+
+    const [inputValue, setInputValue] = useState('');
     const [analysisData, setAnalysisData] = useState(null);
     const [error, setError] = useState(null);
 
-    const handleAnalyze = async () => {
+    const handleChangeInputValue = (event) => {
+        setInputValue(event.target.value);
+    };
+
+    const isFormValid = () => {
+        return inputValue.trim() !== '';
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        if (!isFormValid()) {
+            setError('Please enter a subreddit name');
+            return;
+        }
+
         try {
-            setError(null); // Reset error
-            setAnalysisData(null); // Reset previous results
-            const data = await getSubredditAnalysis(subreddit);
+            setError(null);
+            setAnalysisData(null);
+            const data = await getSubredditAnalysis(inputValue);
             setAnalysisData(data);
         } catch (err) {
             setError(err.message || 'An error occurred while fetching data.');
         }
+    };
+
+    const handleDisagree = (post) => {
+        const analysisId = post.analysisId || post.analysis_id;
+
+        props.setSelectedPost({
+            postData: post,
+            analysisId: analysisId
+        });
+
+        navigate('/suggestion')
+
     };
 
     const createChartData = (scores) => {
@@ -60,19 +90,28 @@ function SubredditAnalyzer() {
 
     return (
         <div className="subreddit-analyzer">
-            <div className="subreddit-analyzer__form">
+            <form className="subreddit-analyzer__form" onSubmit={handleSubmit}>
                 <input
                     className="subreddit-analyzer__input"
                     type="text"
-                    value={subreddit}
-                    onChange={(e) => setSubreddit(e.target.value)}
+                    name="subreddit"         
+                    id="subreddit-input"
+                    value={inputValue}
+                    onChange={handleChangeInputValue}
                     placeholder="Enter a subreddit"
                 />
-                <button className="subreddit-analyzer__button" onClick={handleAnalyze}>
+                <button 
+                type="submit" 
+                className="subreddit-analyzer__button">
                     Analyze
                 </button>
-            </div>
-            {error && <p className="subreddit-analyzer__error">Error: {error}</p>}
+            </form>
+
+            {error && (
+                <p className={`subreddit-analyzer__error ${error.includes('Error') ? 'error' : 'warning'}`}>
+                    {error}
+                </p>
+            )}
 
             {analysisData && (
                 <div className="subreddit-analyzer__results">
@@ -85,12 +124,18 @@ function SubredditAnalyzer() {
                         </p>
                     </div>
                     <div className="subreddit-analyzer__posts">
-                        {/* <h3 className="subreddit-analyzer__posts-title">Analyzed Posts</h3> */}
                         {analysisData.analyzed_posts.map((post) => (
                             <div key={post.id} className="subreddit-analyzer__post">
-                                <h4 className="subreddit-analyzer__post-title"> Ttitle: {post.title}</h4>
+                                <h4 className="subreddit-analyzer__post-title"> Title: {post.title}</h4>
                                 <p className="subreddit-analyzer__post-author">User: {post.author}</p>
-                                <p className="subreddit-analyzer__post-content">Content: {post.content}</p>
+
+                                {post.content ? (
+                                    <p className="subreddit-analyzer__post-content">Content: {post.content}</p>
+                                ) : (
+                                    <p className="subreddit-analyzer__post-content subreddit-analyzer__post-content--empty">
+                                        This post has no content, only the title to analyze.
+                                    </p>
+                                )}
 
                                 {post.analysis && post.analysis.attributeScores ? (
                                     <div>
@@ -101,7 +146,9 @@ function SubredditAnalyzer() {
                                             />
                                         </div>
                                         <div className="subreddit-analyzer__button-container">
-                                            <button className="subreddit-analyzer__button--disagree">
+                                            <button type="button" className="subreddit-analyzer__button--disagree"
+                                                onClick={() => handleDisagree(post)}
+                                            >
                                                 Disagree?
                                             </button>
                                         </div>
