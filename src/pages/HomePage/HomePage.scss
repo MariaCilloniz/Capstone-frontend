@@ -1,6 +1,24 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/mixins' as *;
 
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+        filter: hue-rotate(0deg);
+    }
+
+    50% {
+        background-position: 100% 100%;
+        ;
+        filter: hue-rotate(12deg);
+    }
+
+    100% {
+        background-position: 0% 50%;
+        filter: hue-rotate(0deg);
+    }
+}
+
 .homepage {
     @include desktop {
         height: 93vh;
@@ -20,6 +38,10 @@
         position: relative;
         justify-content: center;
         box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+        background-image: radial-gradient(rgba(255, 255, 255, 0.08) 10%, transparent 10%);
+        background-position: 0 0;
+        background-size: 25px 25px;
+
 
         @include tablet {
             width: auto;
@@ -50,7 +72,6 @@
         }
 
         h1 {
-
             @include tablet {
                 text-align: center
             }
@@ -119,6 +140,8 @@
         width: 364px;
         height: 40vh;
         align-items: center;
+        background-size: 150% 150%;
+        animation: gradient 4s linear infinite;
 
         @include desktop {
             color: $white;
@@ -161,7 +184,13 @@
         }
 
         &--1 {
-            background-color: $card1-orange;
+            // background-color: $card1-orange;
+            background: linear-gradient(45deg,
+                    #ff8800,
+                    #ff6600,
+                    #ff9933,
+                    #ff7700,
+                    #ff8800);
             width: 170vw;
 
             @include tablet {
@@ -171,7 +200,13 @@
         }
 
         &--2 {
-            background-color: $card2-orange;
+            // background-color: $card2-orange;
+            background: linear-gradient(45deg,
+                    #ff0000,
+                    #ff2200,
+                    #ff4444,
+                    #ff1111,
+                    #ff0000);
             width: 170vw;
 
             @include tablet {
@@ -181,7 +216,13 @@
         }
 
         &--3 {
-            background-color: $card3-orange;
+            background: linear-gradient(45deg,
+                    #ff4500, // Reddit orange
+                    #ff5000, // Slightly lighter
+                    #ff4000, // Slightly darker
+                    #ff4800, // Slightly lighter
+                    #ff4500);
+            // background-color: $card3-orange;
             width: 170vw;
 
             @include tablet {

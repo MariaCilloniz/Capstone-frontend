@@ -122,6 +122,54 @@ function SuggestionPage({ postData, analysisId, chartData }) {
             });
         }
     };
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+                labels: {
+                    font: {
+                        family: "'Nunito Sans', sans-serif"
+                    }
+                }
+            },
+            // title: {
+            //     display: true,
+            //     text: 'Text/Post Analysis',
+            //     font: {
+            //     family: "'Nunito Sans', sans-serif",
+            //     size:  20
+            // }
+            // },
+        },
+        scales: {
+            y: {
+                min: 0,
+                max: 1,
+                ticks: {
+                    stepSize: 0.1,
+                    callback: (value) => value.toFixed(1),
+                    font: {
+                        family: "'Nunito Sans', sans-serif"
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Score',
+                    font: {
+                        family: "'Nunito Sans', sans-serif"
+                    }
+                },
+            },
+            x: {
+                ticks: {
+                    font: {
+                        family: "'Nunito Sans', sans-serif"
+                    }
+                }
+            }
+        },
+    };
 
     return (
         <div className="suggestion-page">
@@ -133,10 +181,10 @@ function SuggestionPage({ postData, analysisId, chartData }) {
                         <p><strong>Content: </strong>{postData.content}</p>
                         {chartData && (
                             <div className="suggestion-page__chart">
-                                <h3>Current Analysis Scores</h3>
+                                <h3>Current Analysis Scores:</h3>
                                 <Bar
                                     data={chartData}
-                                    options={{ responsive: true }}
+                                    options={options}
                                 />
                             </div>
                         )}

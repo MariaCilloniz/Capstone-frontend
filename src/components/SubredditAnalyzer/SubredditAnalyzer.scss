@@ -34,7 +34,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-bottom: 1.25rem;
     }
 
     &__posts {
@@ -83,5 +82,42 @@
     &__post-content--empty {
         color: $empty-content;
         font-style: italic;
+    }
+    &__scale {
+        @include body-medium-desktop;
+        margin: 1.25rem auto;
+        width: 500px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        
+        &-bar {
+            height: 8px;
+            background: linear-gradient(to right, #4CAF50, #FFC107, #F44336);
+            border-radius: 4px;
+        }
+        
+        &-labels {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 0.25rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+            gap: 363px;
+        }
+        
+        &-descriptions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.125rem;
+            font-size: 0.75rem;
+            color: #666;
+
+            span{
+                text-align: center;
+                width: 10%;
+            }
+        }
     }
 }

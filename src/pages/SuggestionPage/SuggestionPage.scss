@@ -38,15 +38,17 @@
         display: flex;
         gap: 2.25rem;
         flex-direction: column;
-        align-items: center;
+        align-items: left;
 
         label[for="attribute-name"] {
             @include h2-mobile;
             text-align: center;
+            gap: 31px;
         }
 
         label[for="suggested-score"] {
-            @include h2-mobile
+            @include h2-mobile;
+            text-align: center;
         }
 
         #attribute-name, #suggested-score {

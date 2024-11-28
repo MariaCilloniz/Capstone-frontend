@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './HomePage.scss';
 import TransparentLogo from "../../assets/Icons/52053.png"
 import RedditImage from "../../assets/Images/RedditImage.png"
@@ -9,9 +10,11 @@ function HomePage() {
             <div className="homepage__hero">
                 <h1>Curious about how toxic your favorite subreddit might be? </h1>
                 <p>
-                🚀 Click here to find out with our Reddit Content Audit Tool, powered by the Perspective API! 🚀
+                🚀 Click here to find out with our Reddit Content Audit Tool, powered by Perspective API! 🚀
                 </p>
+                <Link to="/subreddit">
                 <button className="homepage__hero-button">Get Started</button>
+                </Link>
                 <img
                     src={RedditImage}
                     alt="Reddit Logo"

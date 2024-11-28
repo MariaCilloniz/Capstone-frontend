@@ -42,14 +42,14 @@ function SubredditAnalyzer(props) {
     const handleDisagree = (post) => {
         const analysisId = post.analysisId || post.analysis_id;
 
-        const chartData = post.analysis && post.analysis.attributeScores 
-        ? createChartData(post.analysis.attributeScores)
-        : null;
+        const chartData = post.analysis && post.analysis.attributeScores
+            ? createChartData(post.analysis.attributeScores)
+            : null;
 
         props.setSelectedPost({
             postData: post,
             analysisId: analysisId,
-            chartData: chartData 
+            chartData: chartData
         });
 
         navigate('/suggestion')
@@ -92,6 +92,55 @@ function SubredditAnalyzer(props) {
         };
     };
 
+    const options = {
+        responsive: true,
+        plugins: {
+            legend: {
+                position: 'top',
+                labels: {
+                    font: {
+                        family: "'Nunito Sans', sans-serif"
+                    }
+                }
+            },
+            title: {
+                display: true,
+                text: 'Category Scores',
+                font: {
+                    family: "'Nunito Sans', sans-serif"
+                }
+            },
+        },
+        scales: {
+            y: {
+                min: 0,
+                max: 1,
+                ticks: {
+                    stepSize: 0.1,
+                    callback: (value) => value.toFixed(1),
+                    font: {
+                        family: "'Nunito Sans', sans-serif"
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Score',
+                    font: {
+                        family: "'Nunito Sans', sans-serif"
+                    }
+                },
+            },
+            x: {
+                ticks: {
+                    font: {
+                        family: "'Nunito Sans', sans-serif"
+                    }
+                }
+            }
+        },
+    };
+    
+
 
     return (
         <div className="subreddit-analyzer">
@@ -99,15 +148,15 @@ function SubredditAnalyzer(props) {
                 <input
                     className="subreddit-analyzer__input"
                     type="text"
-                    name="subreddit"         
+                    name="subreddit"
                     id="subreddit-input"
                     value={inputValue}
                     onChange={handleChangeInputValue}
                     placeholder="Enter a subreddit"
                 />
-                <button 
-                type="submit" 
-                className="subreddit-analyzer__button">
+                <button
+                    type="submit"
+                    className="subreddit-analyzer__button">
                     Analyze
                 </button>
             </form>
@@ -128,12 +177,22 @@ function SubredditAnalyzer(props) {
                             Posts Counted: {analysisData.post_count}
                         </p>
                     </div>
+                    <div className="subreddit-analyzer__scale">
+                        <div className="subreddit-analyzer__scale-bar"></div>
+                        <div className="subreddit-analyzer__scale-labels">
+                            <span>0</span>
+                            <span>1</span>
+                        </div>
+                        <div className="subreddit-analyzer__scale-descriptions">
+                            <span>No predicted probability </span>
+                            <span>Highest predicted probability</span>
+                        </div>
+                    </div>
                     <div className="subreddit-analyzer__posts">
                         {analysisData.analyzed_posts.map((post) => (
                             <div key={post.id} className="subreddit-analyzer__post">
                                 <h4 className="subreddit-analyzer__post-title"> Title: {post.title}</h4>
                                 <p className="subreddit-analyzer__post-author">User: {post.author}</p>
-
                                 {post.content ? (
                                     <p className="subreddit-analyzer__post-content">Content: {post.content}</p>
                                 ) : (
@@ -141,13 +200,12 @@ function SubredditAnalyzer(props) {
                                         This post has no content, only the title to analyze.
                                     </p>
                                 )}
-
                                 {post.analysis && post.analysis.attributeScores ? (
                                     <div>
                                         <div className="subreddit-analyzer__post-chart">
                                             <Bar
                                                 data={createChartData(post.analysis.attributeScores)}
-                                                options={{ responsive: true }}
+                                                options={options}
                                             />
                                         </div>
                                         <div className="subreddit-analyzer__button-container">
@@ -158,7 +216,6 @@ function SubredditAnalyzer(props) {
                                             </button>
                                         </div>
                                     </div>
-
                                 ) : (
                                     <p className="subreddit-analyzer__post-no-data">
                                         No analysis data available for this post.

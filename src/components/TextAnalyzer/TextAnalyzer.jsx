@@ -23,10 +23,10 @@ const TextAnalyzer = () => {
             });
             return false;
         }
-        const hasLetter = inputValue.split('').some(char => 
+        const hasLetter = inputValue.split('').some(char =>
             (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')
         );
-    
+
         if (!hasLetter) {
             setMessage({
                 text: 'Please enter some actual text to analyze',
@@ -68,7 +68,7 @@ const TextAnalyzer = () => {
                 ],
                 datasets: [
                     {
-                        label: 'Categories',
+                        label: 'Category Scores',
                         data: [
                             toxicity,
                             severe_toxicity,
@@ -113,10 +113,19 @@ const TextAnalyzer = () => {
         plugins: {
             legend: {
                 position: 'top',
+                labels: {
+                    font: {
+                        family: "'Nunito Sans', sans-serif"
+                    }
+                }
             },
             title: {
                 display: true,
-                text: 'Text Analysis Scores',
+                text: 'Text/Post Analysis',
+                font: {
+                family: "'Nunito Sans', sans-serif",
+                size:  20
+            }
             },
         },
         scales: {
@@ -126,12 +135,25 @@ const TextAnalyzer = () => {
                 ticks: {
                     stepSize: 0.1,
                     callback: (value) => value.toFixed(1),
+                    font: {
+                        family: "'Nunito Sans', sans-serif"
+                    }
                 },
                 title: {
                     display: true,
                     text: 'Score',
+                    font: {
+                        family: "'Nunito Sans', sans-serif"
+                    }
                 },
             },
+            x: {
+                ticks: {
+                    font: {
+                        family: "'Nunito Sans', sans-serif"
+                    }
+                }
+            }
         },
     };
 
@@ -141,8 +163,8 @@ const TextAnalyzer = () => {
             <form className="text-analyzer__form" onSubmit={handleSubmit}>
                 <textarea
                     className="text-analyzer__textarea"
-                    name="text-input"         
-                    id="text-analysis-input"  
+                    name="text-input"
+                    id="text-analysis-input"
                     value={inputValue}
                     onChange={handleChangeInputValue}
                     placeholder="Enter text to analyze"
@@ -153,6 +175,20 @@ const TextAnalyzer = () => {
                 <p className={`text-analyzer__message ${message.type}`}>
                     {message.text}
                 </p>
+            )}
+
+            {chartData && (
+                <div className="text-analyzer__scale">
+                    <div className="text-analyzer__scale-bar"></div>
+                    <div className="text-analyzer__scale-labels">
+                        <span>0</span>
+                        <span>1</span>
+                    </div>
+                    <div className="text-analyzer__scale-descriptions">
+                        <span>No predicted probability</span>
+                        <span>Highest predicted probability</span>
+                    </div>
+                </div>
             )}
             {chartData && <Bar data={chartData} options={options} />}
         </div>
