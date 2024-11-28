@@ -5,11 +5,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
+    padding: 1.25rem;
     background-color: $card-background;
-    border-radius: 8px;
-    border: 3px solid $white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+    border: 0.1875rem solid $white;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
     width: 165vw;
 
     @include tablet {
@@ -17,7 +17,7 @@
     }
 
     @include desktop {
-        padding: 20px;
+        padding: 1.25rem;
         margin-left: 17%;
         border: none;
         border-radius: none;
@@ -29,14 +29,14 @@
 
         p {
             text-align: left;
-            padding-top: 20px;
+            padding-top: 1.25rem;
         }
     }
 
     &__form {
-        padding: 20px;
+        padding: 1.25rem;
         display: flex;
-        gap: 36px;
+        gap: 2.25rem;
         flex-direction: column;
         align-items: center;
 
@@ -50,13 +50,13 @@
         }
 
         #attribute-name, #suggested-score {
-            height: 40px;
-            width: 150px;
-            border-radius: 8px;
-            border: 1px solid $grey;
+            height: 2.5rem;
+            width: 9.375rem;
+            border-radius: 0.5rem;
+            border: 0.0625rem solid $grey;
             background: $white;
             @include body-large-mobile;
-            padding-left: 10px;
+            padding-left: 0.625rem;
             color: $black;
         }
 
@@ -67,14 +67,14 @@
     }
 
     &__chart {
-        padding-top: 35px;
+        padding-top: 2.1875rem;
     }
 
     &__message {
         @include body-large-desktop;
-        padding: 10px;
-        border-radius: 4px;
-        margin: 10px 0;
+        padding: 0.625rem;
+        border-radius: 0.25rem;
+        margin: 0.625rem 0;
 
         &.success {
             @include success
@@ -94,7 +94,7 @@
 label {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 1.25rem;
     flex-direction: column;
 
     @include tablet {
@@ -108,5 +108,5 @@ button {
 }
 
 h3, h2 {
-    padding-bottom: 20px;
+    padding-bottom: 1.25rem;
 }

@@ -6,19 +6,19 @@
     width: 161.76vw;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
-    background-color: #f4f4f9;
-    border-radius: 8px;
-    border: 3px solid white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 1.25rem;
+    background-color: $card-background;
+    border-radius: 0.5rem;
+    border: 0.1875rem solid $white;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
 
-    @include tablet{
+    @include tablet {
         width: auto;
     }
 
     @include desktop {
         width: auto;
-        padding: 20px;
+        padding: 1.25rem;
         margin-left: 17%;
         border: none;
         border-radius: none;
@@ -27,6 +27,6 @@
 
     &__title {
         @include h1-mobile;
-        padding-bottom: 20px;
+        padding-bottom: 1.25rem;
     }
 }

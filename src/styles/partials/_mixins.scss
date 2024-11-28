@@ -1,13 +1,13 @@
 @use '../../styles/partials/variables' as *;
 
 @mixin tablet {
-    @media (min-width: 768px) {
+    @media (min-width: 48rem) {
         @content;
     }
 }
 
 @mixin desktop {
-    @media (min-width: 1280px) {
+    @media (min-width: 80rem) {
         @content;
     }
 }
@@ -19,100 +19,69 @@
 
 @mixin h1-desktop {
     @include font-face($bold-weight);
-    font-size: 37px;
-    line-height: 48px;
+    font-size: 2.3125rem;
+    line-height: 3rem;
     color: $white;
 }
 
 @mixin h1-mobile {
     @include font-face($semi-bold-weight);
-    font-size: 28px;
-    line-height: 36px;
+    font-size: 1.75rem;
+    line-height: 2.25rem;
 }
 
 @mixin h2-desktop {
     @include font-face($semi-bold-weight);
-    font-size: 30px;
-    line-height: 58px;
+    font-size: 1.875rem;
+    line-height: 3.625rem;
 }
 
 @mixin h2-mobile {
     @include font-face($semi-bold-weight);
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
 }
 
 @mixin h3-labels-links-button-desktop {
     @include font-face($semi-bold-weight);
-    font-size: 14px;
-    line-height: 22px;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
 }
 
 @mixin h3-labels-links-button-mobile {
     @include font-face($semi-bold-weight);
-    font-size: 13px;
-    line-height: 20px;
-}
-
-@mixin table-header-desktop {
-    @include font-face($semi-bold-weight);
-    font-size: 12px;
-    line-height: 18px;
-}
-
-@mixin table-header-mobile {
-    @include font-face($semi-bold-weight);
-    font-size: 11px;
-    line-height: 16px;
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
 }
 
 @mixin body-large-desktop {
     @include font-face($regular-weight);
-    font-size: 15px;
-    line-height: 28px;
+    font-size: 0.9375rem;
+    line-height: 1.75rem;
 }
 
 @mixin body-large-mobile {
     @include font-face($regular-weight);
-    font-size: 15px;
-    line-height: 26px;
+    font-size: 0.9375rem;
+    line-height: 1.625rem;
 }
 
 @mixin body-medium-desktop {
     @include font-face($regular-weight);
-    font-size: 14px;
-    line-height: 22px;
-}
-
-@mixin body-medium-mobile {
-    @include font-face($regular-weight);
-    font-size: 13px;
-    line-height: 20px;
-}
-
-@mixin body-small-desktop {
-    @include font-face($regular-weight);
-    font-size: 12px;
-    line-height: 18px;
-}
-
-@mixin body-small-mobile {
-    @include font-face($regular-weight);
-    font-size: 11px;
-    line-height: 16px;
+    font-size: 0.875rem;
+    line-height: 1.375rem;
 }
 
 @mixin button-primary {
-    @include font-face($regular-weight);
     background-color: $light-orange;
     height: 2.25rem;
     padding: 0 1rem;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     color: $white;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid $light-orange;
+    border: 0.0625rem solid $light-orange;
     @include h3-labels-links-button-mobile;
 
     &:hover {
@@ -128,18 +97,17 @@
 }
 
 @mixin button-secondary {
-    @include font-face($regular-weight);
     background-color: $reddit-orange;
     height: 3.25rem;
     padding: 0 1rem;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     color: $white;
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid $light-orange;
+    border: 0.0625rem solid $light-orange;
     @include h3-labels-links-button-desktop;
-    font-size: 18px;
+    font-size: 1.125rem;
 
     &:hover {
         background-color: $white;
@@ -156,17 +124,17 @@
 @mixin success {
     background-color: $success-background;
     color: $success-color;
-    border: 1px solid $success-border;
+    border: 0.0625rem solid $success-border;
 }
 
 @mixin error {
     background-color: $error-background;
     color: $error-color;
-    border: 1px solid $error-border
+    border: 0.0625rem solid $error-border
 }
 
 @mixin warning {
     background-color: $warning-background;
     color: $warning-color;
-    border: 1px solid $warning-border;
+    border: 0.0625rem solid $warning-border;
 }
