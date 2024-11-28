@@ -3,7 +3,8 @@
 
 .text-analyzer {
     width: 100%;
-    &__form{
+
+    &__form {
         display: flex;
         flex-direction: column;
         gap: 20px;
@@ -17,11 +18,10 @@
         background: $white;
         @include body-large-mobile;
         padding: 10px;
-        color: #888; 
+        color: $black;
     }
-    
 
-    &__button{
+    &__button {
         @include button-secondary;
     }
 
@@ -30,6 +30,25 @@
         font-size: 14px;
         font-weight: bold;
         margin-top: 10px;
+    }
+
+    &__message {
+        @include body-large-desktop;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+
+        &.success {
+            @include success;
+        }
+
+        &.error {
+            @include error;
+        }
+
+        &.warning {
+            @include warning;
+        }
     }
 
 }

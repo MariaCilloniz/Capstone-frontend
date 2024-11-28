@@ -42,9 +42,14 @@ function SubredditAnalyzer(props) {
     const handleDisagree = (post) => {
         const analysisId = post.analysisId || post.analysis_id;
 
+        const chartData = post.analysis && post.analysis.attributeScores 
+        ? createChartData(post.analysis.attributeScores)
+        : null;
+
         props.setSelectedPost({
             postData: post,
-            analysisId: analysisId
+            analysisId: analysisId,
+            chartData: chartData 
         });
 
         navigate('/suggestion')

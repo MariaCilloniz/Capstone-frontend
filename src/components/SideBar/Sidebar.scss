@@ -160,7 +160,7 @@
             &--active {
                 font-weight: bold;
                 text-decoration: none;
-                color: #FF5722; // Highlight active menu item
+                color: $active-color;
             }
         }
 

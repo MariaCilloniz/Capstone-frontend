@@ -1,0 +1,112 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.suggestion-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: $card-background;
+    border-radius: 8px;
+    border: 3px solid $white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 165vw;
+
+    @include tablet {
+        width: auto;
+    }
+
+    @include desktop {
+        padding: 20px;
+        margin-left: 17%;
+        border: none;
+        border-radius: none;
+        box-shadow: none;
+    }
+
+    &__details {
+        width: 100%;
+
+        p {
+            text-align: left;
+            padding-top: 20px;
+        }
+    }
+
+    &__form {
+        padding: 20px;
+        display: flex;
+        gap: 36px;
+        flex-direction: column;
+        align-items: center;
+
+        label[for="attribute-name"] {
+            @include h2-mobile;
+            text-align: center;
+        }
+
+        label[for="suggested-score"] {
+            @include h2-mobile
+        }
+
+        #attribute-name, #suggested-score {
+            height: 40px;
+            width: 150px;
+            border-radius: 8px;
+            border: 1px solid $grey;
+            background: $white;
+            @include body-large-mobile;
+            padding-left: 10px;
+            color: $black;
+        }
+
+        .input-hint {
+            text-align: center;
+            @include body-large-mobile
+        }
+    }
+
+    &__chart {
+        padding-top: 35px;
+    }
+
+    &__message {
+        @include body-large-desktop;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+
+        &.success {
+            @include success
+        }
+
+        &.error {
+            @include error
+        }
+    }
+
+}
+
+.submit-button {
+    @include button-secondary;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-direction: column;
+
+    @include tablet {
+        flex-direction: row;
+
+    }
+}
+
+button {
+    @include button-primary
+}
+
+h3, h2 {
+    padding-bottom: 20px;
+}

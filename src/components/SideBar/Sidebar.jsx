@@ -13,25 +13,31 @@ import ContactIcon from "../../assets/Icons/contact.png"
 import SettingsIcon from "../../assets/Icons/settings.png"
 import LogoutIcon from "../../assets/Icons/off.png"
 
-// you will have to do link...NAVlink//
 function Sidebar() {
     return (
         <aside className="sidebar">
-            <div className="sidebar__logo">
+            <Link to="/" className="sidebar__logo">
                 <img src={Logo} alt="ReddiAudiTool Logo" />
-            </div>
+            </Link>
 
-            <div className="sidebar__audit">
+            <NavLink to="/subreddit" className="sidebar__audit">
                 <img src={AuditIcon} alt="Audit Icon" className="sidebar__audit-icon" />
                 <span>AUDIT</span>
-            </div>
+            </NavLink>
 
             <div className="sidebar__menu">
-                <div className="sidebar__menu-item sidebar__menu-item--active"><div className="sidebar__menu-icon">
-                    <img src={AboutUsIcon} alt="About Us Icon" />
-                </div>
+                <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                        `sidebar__menu-item ${isActive ? 'sidebar__menu-item--active' : ''}`
+                    }
+                >
+                    <div className="sidebar__menu-icon">
+                        <img src={AboutUsIcon} alt="About Us Icon" />
+                    </div>
                     <span>About Us</span>
-                </div>
+                </NavLink>
+
                 <div className="sidebar__menu-item">
                     <div className="sidebar__menu-icon">
                         <img src={FavoritesIcon} alt="Favorites Icon" />
@@ -42,7 +48,7 @@ function Sidebar() {
                     <div className="sidebar__menu-icon">
                         <img src={InboxIcon} alt="Inbox Icon" />
                     </div>
-                    <span>Inbox</span>
+                    <span>Compare</span>
                 </div>
                 <div className="sidebar__menu-item">
                     <div className="sidebar__menu-icon">

@@ -30,7 +30,7 @@ function HomePage() {
                 <div className="homepage__card homepage__card--2">
                     <h2>Focus on metrics that matter to you! 
                     <br />
-                    Look for toxicity, hate speech, threat or profanity.</h2>
+                    Look for toxicity, insults, threat or profanity.</h2>
                     <span className="homepage__card-icon">
                         <img src={TransparentLogo}  alt="Heart Icon" />
                     </span>

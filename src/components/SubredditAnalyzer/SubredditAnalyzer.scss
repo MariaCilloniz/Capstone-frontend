@@ -25,7 +25,8 @@
         @include button-secondary;
 
         &--disagree{
-            @include button-secondary // change this smaller
+            @include button-secondary;
+            @include body-large-desktop;
         }
     }
 
@@ -43,8 +44,8 @@
 
     &__post {
         display: flex;
-        background-color: #fff;
-        border: 1px solid #ddd;
+        background-color: $white;
+        border: 1px solid $post-border;
         border-radius: 8px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         padding: 20px;
@@ -80,7 +81,7 @@
 
     }
     &__post-content--empty {
-        color: #666;
+        color: $empty-content;
         font-style: italic;
     }
 

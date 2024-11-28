@@ -9,14 +9,43 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 const TextAnalyzer = () => {
     const [inputValue, setInputValue] = useState('');
     const [chartData, setChartData] = useState(null);
-    const [error, setError] = useState(null);
+    const [message, setMessage] = useState({ text: null, type: null });
+
+    const handleChangeInputValue = (event) => {
+        setInputValue(event.target.value);
+    };
+
+    const isFormValid = () => {
+        if (!inputValue.trim()) {
+            setMessage({
+                text: 'Please enter some text or post to analyze',
+                type: 'warning'
+            });
+            return false;
+        }
+        const hasLetter = inputValue.split('').some(char => 
+            (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')
+        );
+    
+        if (!hasLetter) {
+            setMessage({
+                text: 'Please enter some actual text to analyze',
+                type: 'warning'
+            });
+            return false;
+        }
+        return true;
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            setError(null);
+        if (!isFormValid()) {
+            return;
+        }
 
+        try {
+            setMessage({ text: null, type: null });
             const response = await analyzeText(inputValue);
 
             const {
@@ -68,8 +97,15 @@ const TextAnalyzer = () => {
                     },
                 ],
             });
+            setMessage({
+                text: 'Text analyzed successfully!',
+                type: 'success'
+            });
         } catch (err) {
-            setError('Failed to analyze text. Please try again.');
+            setMessage({
+                text: 'Failed to analyze text. Please try again.',
+                type: 'error'
+            });
         }
     };
     const options = {
@@ -93,7 +129,7 @@ const TextAnalyzer = () => {
                 },
                 title: {
                     display: true,
-                    text: 'Score (0 to 1)',
+                    text: 'Score',
                 },
             },
         },
@@ -108,12 +144,16 @@ const TextAnalyzer = () => {
                     name="text-input"         
                     id="text-analysis-input"  
                     value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
+                    onChange={handleChangeInputValue}
                     placeholder="Enter text to analyze"
                 />
                 <button type="submit" className="text-analyzer__button">Analyze</button>
             </form>
-            {error && <p className="text-analyzer__error">{error}</p>}
+            {message.text && (
+                <p className={`text-analyzer__message ${message.type}`}>
+                    {message.text}
+                </p>
+            )}
             {chartData && <Bar data={chartData} options={options} />}
         </div>
     );

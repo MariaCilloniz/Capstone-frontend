@@ -117,7 +117,7 @@
 
     &:hover {
         background-color: $white;
-        border-color: #FFA000;
+        border-color: $hover-border;
         cursor: pointer;
         color: $reddit-orange;
     }
@@ -143,7 +143,7 @@
 
     &:hover {
         background-color: $white;
-        border-color: #FFA000;
+        border-color: $hover-border;
         cursor: pointer;
         color: $reddit-orange;
     }
@@ -151,4 +151,22 @@
     @include tablet {
         height: 2.375rem;
     }
+}
+
+@mixin success {
+    background-color: $success-background;
+    color: $success-color;
+    border: 1px solid $success-border;
+}
+
+@mixin error {
+    background-color: $error-background;
+    color: $error-color;
+    border: 1px solid $error-border
+}
+
+@mixin warning {
+    background-color: $warning-background;
+    color: $warning-color;
+    border: 1px solid $warning-border;
 }

@@ -26,6 +26,7 @@ function App() {
               <SuggestionPage 
                 postData={selectedPost.postData} 
                 analysisId={selectedPost.analysisId}
+                chartData={selectedPost.chartData}
               />
             ) : (
               <Navigate to="/subreddit" /> 
