@@ -43,7 +43,7 @@
         label[for="attribute-name"] {
             @include h2-mobile;
             text-align: center;
-            gap: 31px;
+            gap: 1.9375rem;
         }
 
         label[for="suggested-score"] {
@@ -64,7 +64,9 @@
 
         .input-hint {
             text-align: center;
-            @include body-large-mobile
+            @include body-small-desktop;
+            background: #FFFFFF;
+            border-radius: 0.5rem;
         }
     }
 

@@ -40,7 +40,7 @@
         box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
         background-image: radial-gradient(rgba(255, 255, 255, 0.08) 10%, transparent 10%);
         background-position: 0 0;
-        background-size: 25px 25px;
+        background-size: 1.5625rem 1.5625rem;
 
 
         @include tablet {
@@ -137,7 +137,7 @@
         text-align: center;
         justify-content: space-between;
         box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
-        width: 364px;
+        width: 22.75rem;
         height: 40vh;
         align-items: center;
         background-size: 150% 150%;
@@ -152,7 +152,7 @@
             text-align: center;
             justify-content: space-between;
             box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
-            width: 364px;
+            width: 22.75rem;
             height: 40vh;
             align-items: center;
         }

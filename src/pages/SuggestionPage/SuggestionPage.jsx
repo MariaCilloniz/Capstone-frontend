@@ -133,6 +133,20 @@ function SuggestionPage({ postData, analysisId, chartData }) {
                     }
                 }
             },
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed.y !== null) {
+                            label += (context.parsed.y * 100).toFixed(1) + '%';
+                        }
+                        return label;
+                    }
+                }
+            }
             // title: {
             //     display: true,
             //     text: 'Text/Post Analysis',

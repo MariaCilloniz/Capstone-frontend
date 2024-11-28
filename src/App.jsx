@@ -19,6 +19,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/posts" element={<PostsPage setSelectedPost={setSelectedPost} />} />
         <Route path="/subreddit" element={<SubRedditPage setSelectedPost={setSelectedPost} />} />
+        <Route path="/subreddit/:subredditName" element={<SubRedditPage setSelectedPost={setSelectedPost} />} />
         <Route 
           path="/suggestion" 
           element={

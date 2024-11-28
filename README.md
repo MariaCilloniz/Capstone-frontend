@@ -21,23 +21,19 @@ These users need thoughtful, nuanced analysis that goes beyond simple "good/bad"
 ### Features
 
 1. Subreddit Analysis
-   - Users can input a subreddit name
-   - View toxicity scores for recent posts
-   - See breakdown of different sentiment metrics
+   - Users can input and look up a subreddit account
+   - View toxicity scores for 10 recent posts
+   - See breakdown of different sentiment metrics 
 
-2. Single Text Analysis
+   1.2. Score Suggestions
+   - Submit suggested scores for content if they disagree with the analysis provided by Perspective
+   - Contribute to scoring accuracy
+
+2. Single Text/Post Analysis
    - Input custom text for analysis
    - Get detailed toxicity metrics
-   - Compare results with community averages (in the future)
 
-3. Batch Text Analysis
-   - Analyze multiple texts simultaneously
-   - View aggregate statistics (use of chart js)
-   - Export results for further analysis (in the future)
 
-4. Score Suggestions
-   - Submit suggested scores for content if they disagree
-   - Contribute to scoring accuracy
 
 ## Implementation
 
@@ -75,7 +71,7 @@ These users need thoughtful, nuanced analysis that goes beyond simple "good/bad"
 
 ### Data
 
-MySQL will be primarily used to store data. It will save toxicity scores from analyzed Reddit posts and text analysis results to hopefully keep historical data for comparison and hopefully, avoid redundant API calls.
+MySQL will be primarily used to store data. It will save toxicity scores from analyzed SubReddit accounts (posts) and text analysis results to hopefully keep historical data for comparison and hopefully, avoid redundant API calls if it has been looked up before.
 
 ### Endpoints
 
@@ -111,3 +107,9 @@ Nov 25th-28th: Add data visualization. Polish UX-UI. User testing & bug fixes.
    - PDF reports
    - Data export options
    - Integration with moderation tools
+   - Compare results with community averages (in the future)
+
+   3. Batch Text Analysis
+   - Analyze multiple texts simultaneously
+   - View aggregate statistics (use of chart js)
+   - Export results for further analysis (in the future)

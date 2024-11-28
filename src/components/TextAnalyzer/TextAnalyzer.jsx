@@ -111,6 +111,20 @@ const TextAnalyzer = () => {
     const options = {
         responsive: true,
         plugins: {
+            tooltip: {
+                callbacks: {
+                    label: function(context) {
+                        let label = context.dataset.label || '';
+                        if (label) {
+                            label += ': ';
+                        }
+                        if (context.parsed.y !== null) {
+                            label += (context.parsed.y * 100).toFixed(1) + '%';
+                        }
+                        return label;
+                    }
+                }
+            },
             legend: {
                 position: 'top',
                 labels: {

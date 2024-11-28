@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import './SubredditAnalyzer.scss'
 import { getSubredditAnalysis } from '../../api/SubredditAnalyzerApi'
@@ -8,36 +9,74 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 function SubredditAnalyzer(props) {
     const navigate = useNavigate();
+    const { subredditName } = useParams();
 
     const [inputValue, setInputValue] = useState('');
     const [analysisData, setAnalysisData] = useState(null);
-    const [error, setError] = useState(null);
+    const [message, setMessage] = useState({ text: null, type: null });
 
     const handleChangeInputValue = (event) => {
         setInputValue(event.target.value);
     };
 
     const isFormValid = () => {
-        return inputValue.trim() !== '';
+        const trimmedValue = inputValue ? inputValue.trim() : '';
+
+        if (!trimmedValue) {
+            setMessage({
+                text: 'Please enter a subreddit name',
+                type: 'warning'
+            });
+            return false;
+        }
+
+        const hasLetter = trimmedValue.split('').some((char) =>
+            (char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z')
+        );
+
+        if (!hasLetter) {
+            setMessage({
+                text: 'Please enter a valid subreddit name.',
+                type: 'warning'
+            });
+            return false;
+        }
+
+        setMessage(null);
+        return true;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (!isFormValid()) {
-            setError('Please enter a subreddit name');
             return;
         }
 
+        const trimmedValue = inputValue.trim();
         try {
-            setError(null);
-            setAnalysisData(null);
-            const data = await getSubredditAnalysis(inputValue);
+            setMessage({ text: 'Analyzing subreddit...', type: 'info' });
+            const data = await getSubredditAnalysis(trimmedValue);
             setAnalysisData(data);
+            setMessage({
+                text: `Analysis for r/${trimmedValue} completed successfully!`,
+                type: 'success'
+            });
+            setInputValue('');
         } catch (err) {
-            setError(err.message || 'An error occurred while fetching data.');
+            setMessage({
+                text: 'Failed to analyze subreddit. Please try again.',
+                type: 'error'
+            });
         }
     };
+
+    useEffect(() => {
+        subredditName && (() => {
+            setInputValue(subredditName);
+            handleSubmit({ preventDefault: () => {} });
+        })();
+    }, [subredditName]);
 
     const handleDisagree = (post) => {
         const analysisId = post.analysisId || post.analysis_id;
@@ -53,7 +92,6 @@ function SubredditAnalyzer(props) {
         });
 
         navigate('/suggestion')
-
     };
 
     const createChartData = (scores) => {
@@ -139,7 +177,7 @@ function SubredditAnalyzer(props) {
             }
         },
     };
-    
+
 
 
     return (
@@ -161,9 +199,9 @@ function SubredditAnalyzer(props) {
                 </button>
             </form>
 
-            {error && (
-                <p className={`subreddit-analyzer__error ${error.includes('Error') ? 'error' : 'warning'}`}>
-                    {error}
+            {message.text && (
+                <p className={`subreddit-analyzer__message ${message.type}`}>
+                    {message.text}
                 </p>
             )}
 
