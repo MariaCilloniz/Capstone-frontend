@@ -105,3 +105,5 @@ Nov 25th-28th: Add data visualization. Polish UX-UI. User testing & bug fixes.
    - Compare results with community averages (in the future)
 3. Fvaorites
    -Saving featured posts or analysis
+4. Comments analysis
+   - Reddit's real dynamics often play out in the comments section - that's where most heated discussions and potential toxicity occurs.
