@@ -12,7 +12,11 @@ import SuggestionPage from './pages/SuggestionPage/SuggestionPage';
 function App() {
   const [selectedPost, setSelectedPost] = useState(null);
   return (
-    <BrowserRouter>
+    <BrowserRouter future={{
+      v7_relativeSplatPath: true,
+      v7_startTransition: true,
+    }}
+  >
     <Header />
     <Sidebar />
       <Routes>
