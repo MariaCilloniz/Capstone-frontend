@@ -48,7 +48,7 @@ These users need thoughtful, nuanced analysis that goes beyond simple "good/bad"
 
 - Reddit API: Fetching subreddit content
 - Perspective API: Content analysis
-- Custom REST APIs: Backend services
+- Custom REST APIs: Backend services to analyze the subbreddit and text
 
 ### Sitemap
 
@@ -83,13 +83,9 @@ MySQL will be primarily used to store data. It will save toxicity scores from an
    - Body: { text }
    - Response: Analysis scores
 
-3. POST /api/analysis/batch
-   - Body: { texts: string[] }
-   - Response: Batch analysis results
-
-4. POST /api/suggestions/score
-   - Body: { text, suggestedScore, attributeName }
-   - Response: Comparison results
+3. POST /api/suggestion/score
+   - Body: { suggestedScore, attributeName }
+   - Response:  Results
 
 ## Roadmap
 
@@ -99,17 +95,13 @@ Nov 25th-28th: Add data visualization. Polish UX-UI. User testing & bug fixes.
 
 
 ## Future Implementations
-1. User Authentication
+1. User Authentication (Login)
    - Save analysis history
    - Personalized dashboards
    - Private analysis storage
 2. Export Features
    - PDF reports
    - Data export options
-   - Integration with moderation tools
    - Compare results with community averages (in the future)
-
-   3. Batch Text Analysis
-   - Analyze multiple texts simultaneously
-   - View aggregate statistics (use of chart js)
-   - Export results for further analysis (in the future)
+3. Fvaorites
+   -Saving featured posts or analysis
