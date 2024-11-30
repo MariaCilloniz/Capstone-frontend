@@ -204,7 +204,7 @@ function SuggestionPage({ postData, analysisId, chartData }) {
                                 value={formData.attributeName}
                                 onChange={handleChange}
                             >
-                                <option value="">Select attribute...</option>
+                                <option value="">Select attribute</option>
                                 {validAttributes.map((attribute) => (
                                     <option key={attribute} value={attribute}>
                                         {attribute.split('_').join(' ')}
@@ -225,7 +225,7 @@ function SuggestionPage({ postData, analysisId, chartData }) {
                                 className={`form__input ${!isScoreValid() && formData.suggestedScore ? 'form__input--invalid' : ''}`}
                             />
                         </label>
-                        <button type="submit" className="submit-button" >Submit Appeal</button>
+                        <button type="submit" className="submit-button" >Submit</button>
                     </form>
                 </>
             ) : (

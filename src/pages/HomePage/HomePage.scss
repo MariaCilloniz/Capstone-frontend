@@ -27,7 +27,7 @@
     }
 
     &__hero {
-
+        gap: 10px;
         width: 170vw;
         display: flex;
         flex-direction: column;
@@ -72,9 +72,7 @@
         }
 
         h1 {
-            @include tablet {
-                text-align: center
-            }
+            text-align: center;
 
             @include desktop {
                 @include h1-desktop;
@@ -84,9 +82,11 @@
         }
 
         p {
+            text-align: center;
             @include body-medium-desktop;
             padding-bottom: 1.25rem;
             padding-top: 1.25rem;
+            font-size: 17px;
         }
 
         &-button {
@@ -94,14 +94,19 @@
         }
 
         &-image {
+            width: 227px;
+            border-radius: 15%;
+
             @include tablet {
                 padding-top: 0.625rem;
             }
 
             @include desktop {
-                top: 2.625rem;
+                top: 38px;
                 position: absolute;
                 right: 7.5rem;
+                width: 227px;
+                border-radius: 15%;
             }
         }
     }
@@ -184,7 +189,6 @@
         }
 
         &--1 {
-            // background-color: $card1-orange;
             background: linear-gradient(45deg,
                     #ff8800,
                     #ff6600,
@@ -200,7 +204,6 @@
         }
 
         &--2 {
-            // background-color: $card2-orange;
             background: linear-gradient(45deg,
                     #ff0000,
                     #ff2200,
@@ -222,7 +225,6 @@
                     #ff4000, // Slightly darker
                     #ff4800, // Slightly lighter
                     #ff4500);
-            // background-color: $card3-orange;
             width: 170vw;
 
             @include tablet {

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, NavLink } from "react-router-dom";
 import './Sidebar.scss';
-import Logo from '../../assets/Icons/logo.png'
+import Logo from '../../assets/Icons/ReddiLogoWeb.png'
 import AuditIcon from '../../assets/Icons/auditicon.png'
 import AboutUsIcon from "../../assets/Icons/aboutus.png"
 import FavoritesIcon from "../../assets/Icons/favorites.png"

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './HomePage.scss';
 import TransparentLogo from "../../assets/Icons/52053.png"
-import RedditImage from "../../assets/Images/RedditImage.png"
+import RedditImage from "../../assets/Images/ReddiAuditLogo.png"
 
 function HomePage() {
     return (

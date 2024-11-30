@@ -59,7 +59,7 @@
             background: $white;
             @include body-large-mobile;
             padding-left: 0.625rem;
-            color: $black;
+            color: $empty-content;
         }
 
         .input-hint {

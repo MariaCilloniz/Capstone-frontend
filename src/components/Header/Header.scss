@@ -17,7 +17,6 @@
         padding-right: 1.25rem;
     }
 
-
     &__search {
         @include desktop {
             width: 24.25rem;
@@ -127,7 +126,6 @@
             @include body-medium-desktop;
             color: $black;
         }
-
 
         img {
             @include desktop {
