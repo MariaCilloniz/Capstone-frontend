@@ -32,6 +32,8 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            position: relative; 
+            flex: 1;
         }
     }
 
@@ -48,12 +50,32 @@
         @include desktop {
             @include body-medium-desktop;
             width: 18.75rem;
-            height: 2.375rem;
             padding: 0.75rem 0.75rem 0.75rem 2.25rem;
             border: 0.0375rem solid $grey;
             border-radius: 1.1875rem;
             background-color: $cloud;
             outline: none;
+        }
+    }
+
+    &__search-results {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: $cloud;
+        border-radius: 0.25rem;
+        margin-top: 0.25rem; 
+        box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
+        z-index: 2; 
+    }
+
+    &__search-result-item {
+        padding: 0.625rem 0.9375rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $white;
         }
     }
 
@@ -98,7 +120,6 @@
                 color: $black;
             }
         }
-
     }
 
     &__dropdown-icon {
