@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
 import { useState } from 'react';
-// import TextAnalyzer from './components/TextAnalyzer/TextAnalyzer'
 import './App.scss'
 import Header from './components/Header/Header';
 import Sidebar from './components/SideBar/Sidebar';
@@ -8,6 +7,7 @@ import HomePage from './pages/HomePage/HomePage';
 import PostsPage from './pages/PostsPage/PostsPage';
 import SubRedditPage from './pages/SubredditPage/SubRedditPage';
 import SuggestionPage from './pages/SuggestionPage/SuggestionPage';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 function App() {
   const [selectedPost, setSelectedPost] = useState(null);
@@ -38,7 +38,9 @@ function App() {
             )
           }
         />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
+    
     </BrowserRouter>
   )
 }

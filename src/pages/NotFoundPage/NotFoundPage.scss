@@ -1,0 +1,71 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/mixins' as *;
+
+.notfound {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.25rem;
+    background-color: $card-background;
+    border-radius: 0.5rem;
+    border: 0.1875rem solid $white;
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+    width: 165vw;
+
+    @include tablet {
+        width: auto;
+    }
+    
+
+    @include desktop {
+        display: flex;
+        flex-direction: row;
+        padding: 7.25rem;
+        margin-left: 17%;
+        border: none;
+        border-radius: none;
+        box-shadow: none;
+    }
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+    }
+
+    &__img {
+        width: 70vw;
+        height: auto;
+
+        @include tablet {
+            width: 50vw;
+        }
+
+        @include desktop {
+            width: 35vw;
+        }
+    }
+
+    &__title {
+        font-size: 2rem;
+        text-align: center;
+        color: $reddit-orange;
+
+        @include tablet {
+            font-size: 3rem;
+        }
+
+        @include desktop {
+            font-size: 4rem;
+        }
+    }
+
+    &__disc {
+        font-size: 1rem;
+        text-align: center;
+
+        @include desktop {
+            font-size: 1.5rem;
+        }
+    }
+}

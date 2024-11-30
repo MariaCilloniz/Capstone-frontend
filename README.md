@@ -65,9 +65,18 @@ These users need thoughtful, nuanced analysis that goes beyond simple "good/bad"
    - Batch analysis option input
    - Results visualization
 
-### Mockups
+### Mockups and Functionality 
+
+Figma Mock-Up:
 
 ![MockUp Image](/src/assets/Images/mockup.png?raw=true "Mock Up Image")
+
+404 Mock-Up:
+
+![404 Image](/src/assets/Images/404.png?raw=true "404 Image")
+
+Demo Video Mock-Up: 
+[![Demo Video](http://img.youtube.com/vi/aAR5YsxWeY4/0.jpg)](https://youtu.be/aAR5YsxWeY4)
 
 ### Data
 
@@ -91,7 +100,7 @@ MySQL will be primarily used to store data. It will save toxicity scores from an
 
 Nov 17th-21st: Back end up and running. Implement database migrations. Create basic API endpoints
 Nov 22nd-24th: Build frontend components. Integrate APIs. Implement error handling.
-Nov 25th-28th: Add data visualization. Polish UX-UI. User testing & bug fixes. 
+Nov 25th-28th: Perfect data visualization. Polish UX-UI. User testing & bug fixes. 
 
 
 ## Future Implementations
@@ -103,7 +112,7 @@ Nov 25th-28th: Add data visualization. Polish UX-UI. User testing & bug fixes.
    - PDF reports
    - Data export options
    - Compare results with community averages (in the future)
-3. Fvaorites
+3. Favorites
    -Saving featured posts or analysis
 4. Comments analysis
    - Reddit's real dynamics often play out in the comments section - that's where most heated discussions and potential toxicity occurs.

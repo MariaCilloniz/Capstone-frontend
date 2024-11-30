@@ -53,13 +53,13 @@ function SuggestionPage({ postData, analysisId, chartData }) {
     };
 
     const isValidAttribute = (name) => {
-        const formattedName = name.trim()                    
-        .toUpperCase()                                    
-        .split(' ')                                       
-        .filter(word => word !== '')                      
-        .join('_');                                       
+        const formattedName = name.trim()
+            .toUpperCase()
+            .split(' ')
+            .filter(word => word !== '')
+            .join('_');
 
-    return validAttributes.includes(formattedName);
+        return validAttributes.includes(formattedName);
     };
 
     const isFormValid = () => {
@@ -95,11 +95,11 @@ function SuggestionPage({ postData, analysisId, chartData }) {
         }
 
         const formattedAttributeName = formData.attributeName
-        .trim()
-        .toUpperCase()
-        .split(' ')
-        .filter(word => word !== '')
-        .join('_');
+            .trim()
+            .toUpperCase()
+            .split(' ')
+            .filter(word => word !== '')
+            .join('_');
 
         const suggestionData = {
             text: formData.text,
@@ -135,7 +135,7 @@ function SuggestionPage({ postData, analysisId, chartData }) {
             },
             tooltip: {
                 callbacks: {
-                    label: function(context) {
+                    label: function (context) {
                         let label = context.dataset.label || '';
                         if (label) {
                             label += ': ';
@@ -147,14 +147,6 @@ function SuggestionPage({ postData, analysisId, chartData }) {
                     }
                 }
             }
-            // title: {
-            //     display: true,
-            //     text: 'Text/Post Analysis',
-            //     font: {
-            //     family: "'Nunito Sans', sans-serif",
-            //     size:  20
-            // }
-            // },
         },
         scales: {
             y: {
@@ -206,17 +198,19 @@ function SuggestionPage({ postData, analysisId, chartData }) {
                     <form onSubmit={handleSubmit} className="suggestion-page__form">
                         <label htmlFor="attribute-name">
                             Attribute Name:
-                            <input
+                            <select
                                 id="attribute-name"
                                 name="attributeName"
-                                type="text"
                                 value={formData.attributeName}
                                 onChange={handleChange}
-                                placeholder="e.g., TOXICITY"
-                            />
-                            <p className="input-hint">
-                                Valid Attributes: Toxicity, Severe Toxicity, Identity Attack, Insult, Threat and Profanity.
-                            </p>
+                            >
+                                <option value="">Select attribute...</option>
+                                {validAttributes.map((attribute) => (
+                                    <option key={attribute} value={attribute}>
+                                        {attribute.split('_').join(' ')}
+                                    </option>
+                                ))}
+                            </select>
                         </label>
                         <label htmlFor="suggested-score">
                             Suggested Score:
@@ -242,7 +236,7 @@ function SuggestionPage({ postData, analysisId, chartData }) {
                     {message.text}
                 </p>
             )}
-            <button type="button" onClick={() => navigate(-1)}>Go Back</button>
+            <button type="button" onClick={() => navigate('/subreddit')}>Go Back</button>
         </div>
     );
 }
