@@ -49,41 +49,4 @@
             @include warning;
         }
     }
-    &__scale {
-        @include body-medium-desktop;
-        margin: 1.25rem auto;
-        width: 31.25rem;
-        padding: 1.25rem;
-        background-color: $white;
-        border-radius: 0.5rem;
-        box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-        
-        &-bar {
-            height: 0.5rem;
-            background: linear-gradient(to right, $legend-green, $legend-yellow, $legend-red);
-            border-radius: 0.25rem;
-        }
-        
-        &-labels {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 0.25rem;
-            font-weight: 500;
-            font-size: 0.875rem;
-            gap: 22.6875rem;
-        }
-        
-        &-descriptions {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 0.125rem;
-            font-size: 0.75rem;
-            color: $empty-content;
-
-            span{
-                text-align: center;
-                width: 10%;
-            }
-        }
-    }
 }

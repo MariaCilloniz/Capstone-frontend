@@ -190,11 +190,11 @@
 
         &--1 {
             background: linear-gradient(45deg,
-                    #ff8800,
-                    #ff6600,
-                    #ff9933,
-                    #ff7700,
-                    #ff8800);
+                    $card1-orange,
+                    $card1-lightorange,
+                    $card1-lighterorange,
+                    $card1-darkorange,
+                    $card1-darkerorange);
             width: 170vw;
 
             @include tablet {
@@ -205,11 +205,11 @@
 
         &--2 {
             background: linear-gradient(45deg,
-                    #ff0000,
-                    #ff2200,
-                    #ff4444,
-                    #ff1111,
-                    #ff0000);
+                    $card2-red,
+                    $card2-light-red,
+                    $card2-lighter-red,
+                    $card2-dark-red,
+                    $card2-darker-red);
             width: 170vw;
 
             @include tablet {
@@ -220,11 +220,11 @@
 
         &--3 {
             background: linear-gradient(45deg,
-                    #ff4500, // Reddit orange
-                    #ff5000, // Slightly lighter
-                    #ff4000, // Slightly darker
-                    #ff4800, // Slightly lighter
-                    #ff4500);
+                    $card3-orange,
+                    $card3-lightorange,
+                    $card3-lighterorange,
+                    $card3-darkorange,
+                    $card3-darkerorange);
             width: 170vw;
 
             @include tablet {

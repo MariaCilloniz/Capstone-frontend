@@ -19,12 +19,10 @@ function Sidebar() {
             <Link to="/" className="sidebar__logo">
                 <img src={Logo} alt="ReddiAudiTool Logo" />
             </Link>
-
             <NavLink to="/subreddit" className="sidebar__audit">
                 <img src={AuditIcon} alt="Audit Icon" className="sidebar__audit-icon" />
                 <span>AUDIT</span>
             </NavLink>
-
             <div className="sidebar__menu">
                 <NavLink
                     to="/"
@@ -37,7 +35,6 @@ function Sidebar() {
                     </div>
                     <span>About Us</span>
                 </NavLink>
-
                 <div className="sidebar__menu-item">
                     <div className="sidebar__menu-icon">
                         <img src={FavoritesIcon} alt="Favorites Icon" />
@@ -57,10 +54,8 @@ function Sidebar() {
                     <span>Ranking</span>
                 </div>
             </div>
-
             <div className="sidebar__services">
                 <div className="sidebar__services-title">SERVICES</div>
-
                 <NavLink
                     to="/subreddit"
                     className={({ isActive }) =>
@@ -72,7 +67,6 @@ function Sidebar() {
                     </div>
                     <span>Subreddit Analyzer</span>
                 </NavLink>
-
                 <NavLink
                     to="/posts"
                     className={({ isActive }) =>
@@ -84,9 +78,6 @@ function Sidebar() {
                     </div>
                     <span>Posts Analyzer</span>
                 </NavLink>
-
-
-
                 <div className="sidebar__menu-item">
                     <div className="sidebar__menu-icon">
                         <img src={ContactIcon} alt="Contact Icon" />
@@ -94,7 +85,6 @@ function Sidebar() {
                     <span>Contact</span>
                 </div>
             </div>
-
             <div className="sidebar__footer">
                 <div className="sidebar__menu-item">
                     <div className="sidebar__menu-icon">

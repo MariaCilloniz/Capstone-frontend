@@ -6,6 +6,7 @@ import { getSubredditAnalysis } from '../../api/SubredditAnalyzerApi'
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+import Scale from '../Scale/Scale'
 
 function SubredditAnalyzer(props) {
     const navigate = useNavigate();
@@ -178,8 +179,6 @@ function SubredditAnalyzer(props) {
         },
     };
 
-
-
     return (
         <div className="subreddit-analyzer">
             <form className="subreddit-analyzer__form" onSubmit={handleSubmit}>
@@ -198,13 +197,11 @@ function SubredditAnalyzer(props) {
                     Analyze
                 </button>
             </form>
-
             {message.text && (
                 <p className={`subreddit-analyzer__message ${message.type}`}>
                     {message.text}
                 </p>
             )}
-
             {analysisData && (
                 <div className="subreddit-analyzer__results">
                     <div className='subreddit-analyzer__info'>
@@ -215,17 +212,7 @@ function SubredditAnalyzer(props) {
                             Posts Counted: {analysisData.post_count}
                         </p>
                     </div>
-                    <div className="subreddit-analyzer__scale">
-                        <div className="subreddit-analyzer__scale-bar"></div>
-                        <div className="subreddit-analyzer__scale-labels">
-                            <span>0</span>
-                            <span>1</span>
-                        </div>
-                        <div className="subreddit-analyzer__scale-descriptions">
-                            <span>No predicted probability </span>
-                            <span>Highest predicted probability</span>
-                        </div>
-                    </div>
+                    <Scale />
                     <div className="subreddit-analyzer__posts">
                         {analysisData.analyzed_posts.map((post) => (
                             <div key={post.id} className="subreddit-analyzer__post">

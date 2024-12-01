@@ -21,7 +21,6 @@ function HomePage() {
                     className="homepage__hero-image"
                 />
             </div>
-
             <div className="homepage__cards">
                 <div className="homepage__card homepage__card--1">
                     <h2>Disagree with the scores? <br />

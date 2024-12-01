@@ -3,6 +3,7 @@ import { analyzeText } from '../../api/TextAnalyzerApi';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import './TextAnalyzer.scss'
+import Scale from '../Scale/Scale'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
@@ -170,8 +171,6 @@ const TextAnalyzer = () => {
             }
         },
     };
-
-
     return (
         <div className="text-analyzer">
             <form className="text-analyzer__form" onSubmit={handleSubmit}>
@@ -190,20 +189,7 @@ const TextAnalyzer = () => {
                     {message.text}
                 </p>
             )}
-
-            {chartData && (
-                <div className="text-analyzer__scale">
-                    <div className="text-analyzer__scale-bar"></div>
-                    <div className="text-analyzer__scale-labels">
-                        <span>0</span>
-                        <span>1</span>
-                    </div>
-                    <div className="text-analyzer__scale-descriptions">
-                        <span>No predicted probability</span>
-                        <span>Highest predicted probability</span>
-                    </div>
-                </div>
-            )}
+            {chartData && <Scale />}
             {chartData && <Bar data={chartData} options={options} />}
         </div>
     );
